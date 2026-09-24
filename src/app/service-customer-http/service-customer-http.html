@@ -1,0 +1,25 @@
+<p *ngIf="errorMessage()">Lỗi tải customers.json: {{ errorMessage() }}</p>
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>#</th>
+    </tr>
+    <ng-container *ngFor="let type of customers()">
+        <tr>
+            <td colspan="5">{{ type.CustomerTypeId}}-{{type.CustomterTypeName}}</td>
+        </tr>
+        <tr *ngFor="let customer of type.Customers">
+            <td>{{ customer.Id }}</td>
+            <td>{{ customer.Name }}</td>
+            <td>{{ customer.Email }}</td>
+            <td>{{ customer.Age }}</td>
+            <td>
+                <img [src]="customer.Image" width="150">
+            </td>
+        </tr>
+    </ng-container>
+</table>
